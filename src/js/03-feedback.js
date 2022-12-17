@@ -28,13 +28,13 @@ function handleFormSubmit(event) {
 }
 
 (function addDataFromLocalStorage() {
-  const { email, message } = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  const savedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
-  if (!{ email, message }) {
+  if (!savedData) {
     return;
   }
-  formRef.elements.email.value = email;
-  formRef.elements.message.value = message;
+  formRef.elements.email.value = savedData.email;
+  formRef.elements.message.value = savedData.message;
 })();
 
 function stopDefaultActions(event) {
