@@ -6,14 +6,17 @@ const iframeRef = document.querySelector('#vimeo-player');
 const iframePlayer = new Player(iframeRef);
 
 iframePlayer.on('timeupdate', throttle(handlePlayerOn, 1000));
-iframePlayer.on('play', handlePlayerPlay);
 
 function handlePlayerOn({ seconds }) {
   localStorage.setItem('videoplayer-current-time', seconds);
 }
 
-function handlePlayerPlay() {
+(function handlePlayerPlay() {
+  const savedData = localStorage.getItem('videoplayer-current-time');
+  if (!savedData) {
+    return;
+  }
   iframePlayer.setCurrentTime(
     localStorage.getItem('videoplayer-current-time') || 0
   );
-}
+})();
