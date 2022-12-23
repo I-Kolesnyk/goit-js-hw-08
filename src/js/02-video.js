@@ -7,7 +7,10 @@ const iframeRef = document.querySelector('#vimeo-player');
 const iframePlayer = new Player(iframeRef);
 
 iframePlayer.on('timeupdate', throttle(handlePlayerOn, 1000));
-
+/**
+ *
+ * @param {*} param0
+ */
 function handlePlayerOn({ seconds }) {
   localStorage.setItem(STORAGE_KEY, seconds);
 }

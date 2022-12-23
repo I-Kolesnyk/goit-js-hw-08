@@ -10,7 +10,10 @@ let formData = {
   email: '',
   message: '',
 };
-
+/**
+ *
+ * @param {*} event
+ */
 function handleFormItemsInput(event) {
   if (event.target.name === 'email') {
     formData.email = event.target.value;
@@ -22,6 +25,11 @@ function handleFormItemsInput(event) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData || {}));
 }
 
+/**
+ *
+ * @param {*} event
+ * @returns
+ */
 function handleFormSubmit(event) {
   stopDefaultActions(event);
 
@@ -43,7 +51,10 @@ function handleFormSubmit(event) {
   formRef.elements.email.value = savedData.email;
   formRef.elements.message.value = savedData.message;
 })();
-
+/**
+ *
+ * @param {*} event
+ */
 function stopDefaultActions(event) {
   event.preventDefault();
 }
